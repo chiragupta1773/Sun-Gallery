@@ -1,0 +1,63 @@
+SUN GALLERY — THE WEBSITE FOLDER
+================================
+
+This is the real, multi-page website: 13 separate pages that Google can
+index individually. Use this to deploy.
+
+
+TO LOOK AT IT ON YOUR COMPUTER
+------------------------------
+Double-click  index.html  inside this folder.
+
+It must stay next to the assets folder. Move index.html out on its own and
+you get a blank page, because it can no longer reach the stylesheet, the
+scripts or the photographs.
+
+
+TO PUT IT ONLINE — GITHUB PAGES
+-------------------------------
+1. Create a repository on github.com.
+2. Upload the CONTENTS of this folder (not the folder itself) so that
+   index.html sits at the top level of the repo.
+   Easiest way: Add file -> Upload files -> drag everything in -> Commit.
+3. Settings -> Pages -> Source: "Deploy from a branch",
+   Branch: main, Folder: / (root). Save.
+4. Wait about a minute, then open the URL GitHub gives you.
+
+Keep the .nojekyll file. Without it GitHub runs Jekyll over the repo and
+can mangle the assets folder.
+
+
+BEFORE YOU GO LIVE
+------------------
+1. Open assets/js/seo.js and set ORIGIN to your real domain.
+   (If you skip this the site still works — canonical tags and structured
+   data fall back to whatever URL it is served from — but setting it is
+   cleaner and stops staging URLs leaking into Google.)
+2. Find-and-replace www.sungallery.info in sitemap.xml and robots.txt.
+3. Open assets/js/data.js and replace the contact details in SITE —
+   the email, phone and address in there are placeholders.
+4. Point the enquiry form somewhere real. contact.html currently opens a
+   mailto: link. Formspree or Netlify Forms takes about five minutes.
+5. Submit sitemap.xml in Google Search Console.
+
+
+ADDING PHOTOS LATER
+-------------------
+1. Put the photo in tools/originals/ named after the key you want,
+   e.g.  copper-polish.jpg
+2. Run:  python3 tools/optimize-images.py
+3. Add the key to the right stone in assets/js/data.js
+
+Nothing in the HTML ever needs editing.
+
+
+THE ONE-FILE VERSION
+--------------------
+If you need a copy you can email or open without unzipping:
+
+    python3 tools/build-single-file.py
+
+That produces Sun-Gallery-Website.html — the whole site in one file.
+Good for previews and clients. Not for deployment: it is one URL, so
+Google sees one page instead of thirteen.
