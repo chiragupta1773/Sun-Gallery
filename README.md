@@ -176,3 +176,5 @@ After launch, submit `sitemap.xml` in Google Search Console.
 6. **Thailand is written as an export market, not a location.** If you do open
    a Thai entity, tell me and I'll add a proper `LocalBusiness` schema — that
    is what earns a local map listing, and faking it gets pages demoted.
+
+   
